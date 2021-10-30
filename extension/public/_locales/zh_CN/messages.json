@@ -1,0 +1,11 @@
+{
+    "appName": {
+      "message": "标签页共享"
+    },
+    "appDesc": {
+      "message": "同步浏览器标签页到OSS中"
+    },
+    "settingPage": {
+      "message": "设置"
+    }
+  }

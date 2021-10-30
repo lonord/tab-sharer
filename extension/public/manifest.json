@@ -1,0 +1,30 @@
+{
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "storage"
+  ],
+  "options_page": "options.html",
+  "action": {
+    "default_icon": {
+      "16": "/images/default16.png",
+      "32": "/images/default32.png",
+      "48": "/images/default48.png",
+      "128": "/images/default128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/default16.png",
+    "32": "/images/default32.png",
+    "48": "/images/default48.png",
+    "128": "/images/default128.png"
+  }
+}

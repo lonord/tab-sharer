@@ -1,0 +1,13 @@
+{
+    "appName": {
+      "message": "Tab Sharer",
+      "description": "The title of the application, displayed in the web store."
+    },
+    "appDesc": {
+      "message": "A chrome extension for syncing tabs to OSS.",
+      "description":"The description of the application, displayed in the web store."
+    },
+    "settingPage": {
+      "message": "Settings"
+    }
+  }

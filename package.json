@@ -1,0 +1,53 @@
+{
+  "name": "tab-sharer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A tool for sharing chrome tags via OSS (Amazon S3)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build-extension": "cd extension/ && cross-env NODE_ENV=production webpack",
+    "start": "next start",
+    "extension": "cd extension/ && cross-env NODE_ENV=development webpack --watch --stats-error-details"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lonord/tab-sharer.git"
+  },
+  "keywords": [
+    "chrome",
+    "tab",
+    "share",
+    "sync"
+  ],
+  "author": "Loy B. <lonord@live.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lonord/tab-sharer/issues"
+  },
+  "homepage": "https://github.com/lonord/tab-sharer#readme",
+  "dependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/icons": "^4.11.2",
+    "@mui/material": "^5.0.5",
+    "babel-loader": "^8.2.3",
+    "copy-webpack-plugin": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "lodash.debounce": "^4.0.8",
+    "next": "^11.1.2",
+    "path-browserify": "^1.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "timers-browserify": "^2.0.12",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0"
+  }
+}
