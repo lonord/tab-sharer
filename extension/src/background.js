@@ -33,7 +33,7 @@ const sync = debounce(async () => {
 
         // send to server
         try {
-            await client.putFileContents('DESKTOP-HSNRN7M.json', JSON.stringify(result))
+            await client.putFileContents(options.hostName + '.json', JSON.stringify(result))
             log('sync succeed')
             chrome.action.enable()
         } catch (e) {
