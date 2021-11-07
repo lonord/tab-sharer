@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce'
-import createClient from '../../lib/oss'
+import createClient from './oss'
 
 const log = (args) => console.log('[TabSharer]', args)
 
@@ -47,20 +47,20 @@ const sync = debounce(async () => {
 
 chrome.runtime.onInstalled.addListener(() => {
     sync()
-
-    chrome.tabs.onUpdated.addListener((id, info, tab) => {
-        if (info.status === 'complete') {
-            sync()
-        }
-    })
-    chrome.tabs.onAttached.addListener(() => sync())
-    chrome.tabs.onDetached.addListener(() => sync())
-    chrome.tabs.onRemoved.addListener(() => sync())
-    chrome.tabGroups.onCreated.addListener(() => sync())
-    chrome.tabGroups.onMoved.addListener(() => sync())
-    chrome.tabGroups.onRemoved.addListener(() => sync())
-    chrome.tabGroups.onUpdated.addListener(() => sync())
 })
+
+chrome.tabs.onUpdated.addListener((id, info, tab) => {
+    if (info.status === 'complete') {
+        sync()
+    }
+})
+chrome.tabs.onAttached.addListener(() => sync())
+chrome.tabs.onDetached.addListener(() => sync())
+chrome.tabs.onRemoved.addListener(() => sync())
+chrome.tabGroups.onCreated.addListener(() => sync())
+chrome.tabGroups.onMoved.addListener(() => sync())
+chrome.tabGroups.onRemoved.addListener(() => sync())
+chrome.tabGroups.onUpdated.addListener(() => sync())
 
 // Initialize the form with the user's option settings
 chrome.storage.local.get('options', (data) => {

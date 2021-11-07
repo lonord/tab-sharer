@@ -1,4 +1,6 @@
-export default function createClient(readConfig) {
+import * as minio from './minio-browser'
+
+const createClient = (readConfig) => {
     let identifier = null
     let cfg = null;
     let client = null
@@ -9,7 +11,7 @@ export default function createClient(readConfig) {
         if (!identifier || identifier !== identifier0) {
             identifier = identifier0
             cfg = cfg0
-            client = new window.MinIO.Client({
+            client = new minio.Client({
                 endPoint: cfg.endPoint,
                 port: cfg.port,
                 useSSL: cfg.useSSL,
@@ -56,3 +58,5 @@ const readObjectStream = (stream) => new Promise((resolve, reject) => {
     stream.on('end', () => resolve(data))
     stream.on('error', reject)
 })
+
+export default createClient

@@ -15,7 +15,7 @@ import Button from '@mui/material/Button'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
-const OptionsPage = ({ defaultOptions, onChange }) => {
+const OptionsPage = ({ defaultOptions, onChange, hideHostName }) => {
     const [options, setOptions] = useState({
         hostName: '',
         accessKey: '',
@@ -32,14 +32,14 @@ const OptionsPage = ({ defaultOptions, onChange }) => {
         if (defaultOptions) {
             setOptions(defaultOptions)
         }
-    }, [ defaultOptions ])
+    }, [defaultOptions])
 
     const updateValue = (key, value) => {
         setOptions({ ...options, [key]: value })
     }
 
     const onSave = () => {
-        if (onChange && options.bucket && options.hostName) {
+        if (onChange && options.bucket && (hideHostName || options.hostName)) {
             onChange(options)
         }
     }
@@ -49,17 +49,19 @@ const OptionsPage = ({ defaultOptions, onChange }) => {
             <Card sx={{ p: 3, mt: 3 }}>
                 <CardContent>
                     <Typography variant="h4" gutterBottom>Settings</Typography>
-                    <TextField
-                        label="Host Name"
-                        variant="outlined"
-                        margin="normal"
-                        size={textFieldSize}
-                        required
-                        fullWidth
-                        error={!options.hostName}
-                        value={options.hostName}
-                        onChange={e => updateValue('hostName', e.target.value)}
-                    />
+                    {!hideHostName && (
+                        <TextField
+                            label="Host Name"
+                            variant="outlined"
+                            margin="normal"
+                            size={textFieldSize}
+                            required
+                            fullWidth
+                            error={!options.hostName}
+                            value={options.hostName}
+                            onChange={e => updateValue('hostName', e.target.value)}
+                        />
+                    )}
                     <TextField
                         label="Access Key"
                         variant="outlined"
@@ -113,7 +115,7 @@ const OptionsPage = ({ defaultOptions, onChange }) => {
                     />
                     <FormGroup>
                         <FormControlLabel
-                            control={<Checkbox/>}
+                            control={<Checkbox />}
                             label="Use SSL"
                             checked={options.useSSL}
                             onChange={e => updateValue('useSSL', e.target.checked)}
